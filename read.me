@@ -1,0 +1,16 @@
+1) porblem cors:
+	a) angular: 
+    have proxy.conf.json set:
+    {
+      "/api": {
+        "target": "http://localhost:8080",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+      }
+    }
+    And then to make sure that URL that you are using in angular to send a request is relative (/api/something) and not absolute (localhost:8080/api/something). Because in that case the proxy won't work.
+	b) springboot: @CrossOrigin(origins = "*", maxAge = 3600)  
+2) poziom logowania: logging.level.root=WARN (TRACE”, “DEBUG”, “INFO”-default, “WARN”, “ERROR”, “FATAL”, “OFF”.), (debug=true) (java –jar demo.jar --debug) 
+3) swagger: localhost:8080/v2/api-docs, http://localhost:8080/swagger-ui/
+4) h2: http://localhost:8080/h2-console
