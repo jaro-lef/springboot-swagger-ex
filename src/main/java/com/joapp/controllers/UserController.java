@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.joapp.HelloWorld;
 import com.joapp.dto.request.UserRequestDTO;
 import com.joapp.dto.response.UserResponseDTO;
 import com.joapp.services.UserService;
@@ -34,13 +35,22 @@ public class UserController {
 	@Value(value = "${spring.profiles.active}")
 	String prop;
 	
+	@Autowired
+	private HelloWorld hw;	
+
+	@Autowired
+	private UserService appaUserService;	
+	
+	/*public UserController(HelloWorld hw) {		
+		this.hw = hw;		
+	}*/
+
 	@PostConstruct
 	public void postConstruct() {
 		logger.info("PostConstruct: "+prop);
+		hw.setMessage("hhhhwooorld");
+		logger.info(hw.getMessage());
 	}
-
-	@Autowired
-	private UserService appaUserService;
 
 	@PostMapping("/new")
 	public ResponseEntity<UserResponseDTO> saveUser(

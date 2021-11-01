@@ -11,8 +11,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 @Configuration
+@Profile({"dev"})
 @EnableSwagger2
-@Profile({"!prod"})
 //@ConditionalOnExpression(value = "${useSwagger:false}")
 public class SwaggerConfig {
 	
