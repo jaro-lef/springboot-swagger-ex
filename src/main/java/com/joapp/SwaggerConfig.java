@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -19,13 +20,13 @@ public class SwaggerConfig {
 	@Bean
 	public Docket productApi() {
 	    return new Docket(DocumentationType.SWAGGER_2)
-	            .select()
+	            .select()	            
 	            .apis(RequestHandlerSelectors.basePackage("com.joapp"))	            
 	            //.paths(regex("/api/users.*"))
 	            //.paths(PathSelectors.ant("/api/**"))
 	            //.paths( PathSelectors.any() )
-	            .build();
-	            //.apiInfo(metaData());
+	            .build()
+	            .apiInfo(new ApiInfoBuilder().version("1.2").title("Person API").description("Documentation Person API v1.0").build());
 	}
 	
 	
